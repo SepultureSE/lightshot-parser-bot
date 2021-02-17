@@ -47,12 +47,12 @@ class LightshotParser(ABC):
         except AttributeError:
             LightshotParser.get_random_screenshot()
         
-        # если такого скриншота на сервере не существует, возвращает None
+        # если такого скриншота на сервере не существует, идет дальше по рекурсии
         try:
             image = requests.get(lightshot_img_path).content  # само изображение скриншота
             return ScreenshotObject(image, generated_link)
         except requests.exceptions.MissingSchema:
-            return None
+            LightshotParser.get_random_screenshot()
     
     @abstractmethod
     def get_screenshot_by_hash(image_hash: str) -> object:
