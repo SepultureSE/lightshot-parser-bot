@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
 from io import BytesIO
 import requests
-import sys
 import numpy as np
 from abc import ABC, abstractmethod
 
