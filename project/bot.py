@@ -38,11 +38,12 @@ def bot_input(message):
             bot.send_message(user_id, 'You aren\'t licky :(')
             return
         bot.send_photo(user_id, photo_n_info.image, reply_markup=main_menu)
+        bot.send_message(user_id, photo_n_info.link, disable_web_page_preview=True)
     if text == '⏱ Photo by hash':
         bot.send_message(message.from_user.id, 'Send me hash')
         bot.register_next_step_handler(message, hash_search)
         photo_n_info = lightshotparser.LightshotParser.get_random_screenshot()
-            
+        
         
         
         
